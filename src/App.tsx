@@ -29,7 +29,7 @@ function App() {
   }
 
   const { data, error, loading } = useFetch<Users[]>('https://jsonplaceholder.typicode.com/users');
-  const { error: errorPost, loading: loadingPost, postData } = usePost('http://httpbin.org/post');
+  const { error: errorPost, loading: loadingPost, postData } = usePost('https://httpbin.org/post');
 
   const handleSubmit = async (values: FormValues, { resetForm }: FormikHelpers<FormValues>) => {
     const body = {
