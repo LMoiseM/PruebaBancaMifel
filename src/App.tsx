@@ -55,10 +55,10 @@ function App() {
     resetForm()
   };
 
-  
+
   useEffect(() => {
     if (loadingPost || loading) {
-     <Loading/>
+      <Loading />
     }
 
     if (errorPost || error) {
@@ -76,7 +76,7 @@ function App() {
           onSubmit={handleSubmit}
           validationSchema={informationValidationSchema}
         >
-          {({ handleSubmit, errors, handleChange, values }) => (
+          {({ handleSubmit, errors, handleChange, values, touched, isValid }) => (
             <form onSubmit={handleSubmit}>
               <div className='fields-container' >
                 <Input
@@ -205,14 +205,22 @@ function App() {
                   errors={errors}
                 />
               </div>
-            
-              <button className='primaryBtn' type='submit'>Guardar</button>
-             
+              {Object.keys(errors).length === 0 && Object.keys(touched).length > 0 || isValid ? (
+                <div className='success-message'>
+                  Campos validados correctamente.
+                </div>
+              ) : (<div className='error-message'>
+                Existen campos por validar.
+              </div>)}
+              <button className='primaryBtn' type='submit' disabled={!isValid}>
+                Guardar
+              </button>
+
             </form>
           )}
         </Formik>
         <Table data={data} />
-        
+
       </div>
 
     </>

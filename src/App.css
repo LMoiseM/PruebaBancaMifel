@@ -128,7 +128,19 @@ button:focus {
   background-color: #003896;
   color: #fff;
 }
-
+.success-message {
+  color: green;
+  font-size: 16px;
+  margin-top: 10px;
+}
+.error-message {
+  color: red;
+  font-size: 16px;
+  margin-top: 10px;
+}
+.primaryBtn:disabled {
+  background-color: gray;
+}
 .container {
   height: 100vh;
   display: flex;
